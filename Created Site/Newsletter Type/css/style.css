@@ -70,6 +70,18 @@ header nav{
   margin-top: 10px;
 }
 
+/* Set header highlight and current class style*/
+header .highlight, header .current a{
+  color: #32a0c2;
+  font-weight: bold;
+}
+
+/* Set header anchor hover style */
+header a:hover{
+  color: #cccccc;
+  font-weight: bold;
+}
+
 /*==============END HEADER CSS STYLE================*/
 
 /*==============SHOWCASE CSS STYLE================*/
@@ -143,6 +155,7 @@ header nav{
 
 /*==============FOOTER CSS STYLE================*/
 
+/* Set footer style */
 footer{
   padding: 20px;
   margin-top: 20px;
@@ -152,3 +165,45 @@ footer{
 }
 
 /*==============END FOOTER CSS STYLE================*/
+
+/*==============ADJUSTING FOR DIFFERENT SCREEN SIZE================*/
+
+/* @media defines different rules for different size */
+@media(max-width: 1024px){
+  /* Keep these the same */
+  header #branding,
+  header nav,
+  header nav li,
+  #newsletter h1,
+  #newsletter form,
+
+  /* Change class and id of boxes style sheet for different resolution */
+  #boxes .box {
+    float: none;
+    text-align: center;
+    width: 100%;
+  }
+  /* Change the amount of padding-bottom for header */
+  header{
+    padding-bottom: 20px;
+  }
+
+  /* Change showcase header margin top */
+  #showcase h1{
+    margin-top: 40px;
+  }
+
+  /* Change the newsletter button style */
+  #newsletter button {
+    display: block;
+    width: 100%;
+  }
+
+  /* Change the input box style */
+  #newsletter form input[type="email"] {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+}
+
+/*==============END ADJUSTING FOR DIFFERENT SCREEN SIZE================*/
