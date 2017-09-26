@@ -160,6 +160,7 @@ header a:hover{
 }
 
 
+
 /* Set the class button style */
 .button_1{
   margin-left: 10px;
@@ -279,3 +280,21 @@ article#main-col{
 }
 
 /*==============END SIDE BAR CSS STYLE SHEET================*/
+
+/*==============DATA CSS STYLE SHEET================*/
+
+/* dataVis id list style */
+ul#dataVis li{
+  list-style: none;
+  padding: 20px;
+  border: #cccccc solid 1px;
+  margin-bottom: 5px;
+  background: #32a0c2;
+}
+
+/* Set header for dataVis id */
+ul#dataVis h3{
+  border-bottom: #353637 solid 1px;
+}
+
+/*==============END DATA CSS STYLE SHEET================*/
