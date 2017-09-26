@@ -1,0 +1,41 @@
+body {
+	background: blue;
+	color: white;
+	margin: 2em;
+	border: 2px solid gray;
+	padding: : 1.5em;
+}	
+
+section {
+	width: 40%
+	background: green;
+	color: black;
+	border: 2px solid red;
+	font-family: Verdana, Trebuchet, 'Trebuchet MS', sans-serif;
+	line-height: 2em;
+}
+
+/* FOR ID */
+#first {
+	color: #00ff99;
+	font-style: italic;
+}
+/* FOR CLASS */
+.not_first{
+	color:#888888;
+	font-style: bold;
+
+}
+/* PSEUDO-CLASS*/
+/*Appling the pseduo class to the anchor (a)*/
+a:link, a:visited, a:active {
+	color:black;
+	text-decoration: none;
+	/*Creates a dotted green line under the text */
+	border-bottom: 1px dotted green;
+}
+
+a:hover {
+	font-family: italic;
+
+}
