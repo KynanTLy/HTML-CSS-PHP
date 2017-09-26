@@ -109,6 +109,24 @@ header a:hover{
 
 /*==============END SHOWCASE CSS STYLE================*/
 
+/*==============BOX CSS STYLE================*/
+
+/* Set the box class format */
+#boxes{
+  margin-top: 20px;
+}
+
+/* Set box class with box id format*/
+
+#boxes .box{
+  float:left;
+  text-align: center;
+  width: 30%;
+  padding: 10px;
+}
+
+/*==============END BOX CSS STYLE================*/
+
 /*==============NEWSLETTER CSS STYLE================*/
 
 /* Set newsletter id style */
@@ -139,12 +157,15 @@ header a:hover{
   width: 300px;
 }
 
+
 /* Set the class button style */
 .button_1{
+  
   margin-left: 10px;
   height: 38px;
-  background: #cccccc;
+  background: #32a0c2;
   border: 0;
+  font-style: bold;
   padding-left: 20px;
   padding-right: 20px;
   color: #353637;
@@ -152,6 +173,18 @@ header a:hover{
 
 
 /*==============END NEWSLETTER CSS STYLE================*/
+
+/*==============ABOUT DARK CSS STYLE================*/
+
+.dark{
+  padding: 15px;
+  background: #35424a;
+  color: #ffffff;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/*==============END ABOUT DARK CSS STYLE================*/
 
 /*==============FOOTER CSS STYLE================*/
 
@@ -169,6 +202,7 @@ footer{
 /*==============ADJUSTING FOR DIFFERENT SCREEN SIZE================*/
 
 /* @media defines different rules for different size */
+/* max-width is 1024 px */
 @media(max-width: 1024px){
   /* Keep these the same */
   header #branding,
@@ -183,6 +217,16 @@ footer{
     text-align: center;
     width: 100%;
   }
+
+  /* Resizing for article */
+  article#main-col,
+  
+  aside#sidebar {
+    float: none;
+    text-align: center;
+    width: 100%;
+  }
+
   /* Change the amount of padding-bottom for header */
   header{
     padding-bottom: 20px;
@@ -200,10 +244,37 @@ footer{
   }
 
   /* Change the input box style */
-  #newsletter form input[type="email"] {
+  #newsletter form input[type="email"],
+  .contact input,
+  .contact textarea,
+  .contact label{
     width: 100%;
     margin-bottom: 5px;
   }
 }
 
 /*==============END ADJUSTING FOR DIFFERENT SCREEN SIZE================*/
+
+
+/*==============SIDE BAR CSS STYLE SHEET================*/
+
+/* Set the sidebar style */
+aside#sidebar{
+  float: right;
+  width: 30%;
+  padding: 5px;
+}
+
+/* Set the text area style */
+aside#sidebar input, aside#sidebar textarea {
+  width: 90%;
+  padding: 5px;
+}
+
+/* Set the article main coloumn */
+article#main-col{
+  float: left;
+  width: 65%;
+}
+
+/*==============END SIDE BAR CSS STYLE SHEET================*/
