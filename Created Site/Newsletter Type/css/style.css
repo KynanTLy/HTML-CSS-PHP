@@ -145,14 +145,16 @@ header a:hover{
 /* Set newsletter form style */
 #newsletter form{
   float: right;
+  width: 200px;
   margin-top: 20px;
 }
 
 /* Set newsletter input style */
 #newsletter input[type="email"]{
-  margin-top: 23px;
-  margin-left: 25px; 
-  padding: 4px;
+  margin-top: 25px;
+  margin-left: 250px;
+  padding-top: 2px;
+  padding-right: 4px;
   height: 15px;
   width: 300px;
 }
@@ -160,9 +162,8 @@ header a:hover{
 
 /* Set the class button style */
 .button_1{
-  
   margin-left: 10px;
-  height: 38px;
+  height: 25px;
   background: #32a0c2;
   border: 0;
   font-style: bold;
