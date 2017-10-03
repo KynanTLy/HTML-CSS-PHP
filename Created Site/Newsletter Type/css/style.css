@@ -138,25 +138,20 @@ header a:hover{
 
 /* Set newsletter header style */
 #newsletter h1{
-  padding: 4px;
   float: left;
 }
 
 /* Set newsletter form style */
 #newsletter form{
   float: right;
-  width: 200px;
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
 /* Set newsletter input style */
 #newsletter input[type="email"]{
-  margin-top: 25px;
-  margin-left: 250px;
-  padding-top: 2px;
-  padding-right: 4px;
-  height: 15px;
-  width: 300px;
+  padding: 4px;
+  height: 25px;
+  width: 250px;  
 }
 
 
@@ -164,10 +159,10 @@ header a:hover{
 /* Set the class button style */
 .button_1{
   margin-left: 10px;
-  height: 25px;
+  height: 40px;
   background: #32a0c2;
   border: 0;
-  font-style: bold;
+  font-weight: bold;
   padding-left: 20px;
   padding-right: 20px;
   color: #353637;
