@@ -1,0 +1,29 @@
+In my database I would like to record reviews on games. The reason I set up
+my datebase into the 4 tables is because I needed a table for each game and 
+user. Each holding some general information of each. 
+
+For user I have their first name, last name, birthdate. For a primary key I 
+have a incrementing ID and I have also opted to record the amount of reviews 
+that user had made. 
+
+For the game table I have followed a similar scheme holding general information
+about each game from name to release date. I have also chosen to have the platform
+in which the game was released to be a ENUM type as there is a set amount of platform
+in which videogames can be played on. Since I am also not doing anything special with
+the genre I felt I did not need to make a table just for it.
+
+I also have a genre table. This is mostly if I wanted to do some sort of sorting 
+for the games being displayed. Therefore it does not have a lot of information 
+in it. 
+
+Finally the biggest table is the review table. This is where it connects to both
+the game and the user table. As each review will have 1 user and 1 game. Although
+the table is big, it mostly to collect different type of review information on the
+game. I am thinking that I would have some form of rating out of 5 or 10 systems
+whereby each user can rate how strongly they felt the game impacted a particular
+aspect about themselves. Therefore I listed a few I thought I wanted to record as
+well as added an additional note section in case they want to justify their results.
+
+Overally I tried to keep my database quite simple in terms of relational complexity.
+Using Enum to create controlled vocabulary for platform and game genre for example.
+Therefore there is few table dependencies that exist in my database.

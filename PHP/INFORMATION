@@ -1,0 +1,10 @@
+Rebase PHP
+	sudo subl /etc/apache2/sites-available/000-default.conf
+		Change to new folder
+	sudo subl /etc/apache2/apache2.conf
+		Change the directory to the new one
+
+
+Restart Apachi Server:
+	sudo /etc/init.d/apache2 restart
+	sudo service apache2 restart
