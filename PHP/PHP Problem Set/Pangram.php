@@ -4,7 +4,7 @@
 echo "=====Pangram=====\n";
 
 // Load the file into a variable
-$pangram_array = file( 'http://hucodev.srv.ualberta.ca/hquamen/courses/huco520/resources/pangrams.txt' );
+$pangram_array = file('http://hucodev.srv.ualberta.ca/hquamen/courses/huco520/resources/pangrams.txt' );
 
 // Iterate through each line in the file
 foreach ($pangram_array as $element){
@@ -13,25 +13,26 @@ foreach ($pangram_array as $element){
 	$alphabet = range('a', 'z');
 
 	// Tokenize the sentence as well as apply some cleaning (to lower case and trim)	
-	$token = str_split(trim(strtolower($element)));
+	$letter = str_split(trim(strtolower($element)));
 
 	// Iterate through each letter
-	foreach ($token as $token){
+	foreach ($letter as $letter){
 		// Check to see if letter is in $alphabet
-		if (is_numeric(array_search($token, $alphabet) )){
+		if (is_numeric(array_search($letter, $alphabet) )){
 			// Remove that letter from the list
-			unset($alphabet[array_search($token, $alphabet)]);
+			unset($alphabet[array_search($letter, $alphabet)]);
 		
 		}//end if 
 	}//end foreach
 
 	// If alphabet is empty => it has all the letters
 	if (empty($alphabet)){
+		$element = trim($element);
 		echo "$element is a Pangram \n";
 	
 	// It did not use all the letters
 	} else {
-
+		$element = trim($element);
 		echo "$element is NOT a Pangram \n";
 		echo "It is missing ";
 
