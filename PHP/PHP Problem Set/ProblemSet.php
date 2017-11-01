@@ -318,10 +318,105 @@ echo "There are $result padindome in the file";
 /////////////////////////////////////////////////////////////////////////////////
 echo "\n\n-------------------  Exercise 8 ----------------------------\n\n";
 
+echo "Devise an Algorithm \n";
+
+// Take in inpit
+$line = readline("Please enter a card: \n");
+
+// Conducts binary search on the array to find the card
+function binarySearch($card, $cards_played){
+
+	// Init min, max, middle index as well as count
+	$minIndex = 0;
+	$maxIndex = count($cards_played)-1;
+	$middleIndex = ceil(($maxIndex - $minIndex) / 2);
+	$count = 0;
+
+	// If the card is out of bound of the highest card or lowest clearly not in list
+	if ($card < $cards_played[0] or $card > $cards_played[count($cards_played)-1]){
+		// exit
+		return NULL;
+	} else {
+
+		// Iterate through array using a middle point as point of comparasion
+		while(true){
+
+			// If we found the card we are done
+			if ($cards_played[$middleIndex] == $card){
+				return $count;
+
+			// If we ran out of search possibility we are done
+			} else if ($maxIndex == $middleIndex or $minIndex == $middleIndex){
+				return NULL;
+			}// end if statment
+
+			// If greater move minIndex up and recalculate middle
+			if ($cards_played[$middleIndex] > $card){
+				$count++;
+				$maxIndex = $middleIndex;
+				$middleIndex = ceil(($maxIndex - $minIndex) / 2);
+
+			// If smaller move maxIndex down adn recalculate middle
+			} else {
+				$count++;
+				$minIndex = $middleIndex;
+				$middleIndex = ceil(($maxIndex - $minIndex) / 2) + $minIndex;
+			}//end if statement
+
+		}//end while loop
+
+	}//end outer if statement
+
+}//end binary search
+
+// Find the card by looking through each element starting from first
+function bruteForce($card, $cards_played){
+	$count = 0;
+
+	// Iterate through each element in the list
+	foreach ($cards_played as $element){
+		
+		// If we found the card return
+		if($element == $card){
+			return $count;
+		} else {
+			$count++;
+		}// end if statement
+	}//end for loop
+
+	// We did not find the card
+	return NULL;
+}//end bruteForce
+
+// Check both method of search
+function Devise($card){
+
+	// Init card array
+	$cards_played = array('C10', 'C2', 'C4', 'C5', 'C6', 'C8', 'CA', 'CQ',
+'D10', 'D2', 'D5', 'D6', 'D7', 'D8', 'D9', 'DA', 'DJ', 'H10', 'H2', 'H3', 'H4',
+'H8', 'H9', 'HA', 'HK', 'S10', 'S3', 'S5', 'S7', 'S8', 'S9', 'SK');
+
+	// Call both searches
+	$binarySearch = binarySearch($card, $cards_played);
+	$bruteForce = bruteForce($card, $cards_played);
+
+	// If one of them is NULL clearly we did not find it 
+	if ($binarySearch == NULL or $bruteForce == NULL){
+		return NULL;
+	} else {
+		return array($binarySearch, $bruteForce);
+	}// end if statement
+}//end devise
 
 
+$result = Devise($line);
 
-
+// Print the result based on the answer
+if ($result == NULL){
+	echo "Sorry that card does not exist";
+} else {
+	echo "A bruce force method took $result[1] and binary search took $result[0] to find the card $line";
+}//end if
 
 
 /////////////////////////////////////////////////////////////////////////////////
