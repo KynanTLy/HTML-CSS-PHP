@@ -122,7 +122,7 @@ function fib($number){
 
 }// end fib
 
-$result = fib($line -1);
+$result = fib($line);
 
 // Format string
 $formatedString =  sprintf("The %uth Fibonacci number is %u.",$line,$result);
@@ -165,14 +165,23 @@ echo "Palindromic Square Numbers\n";
 function Palindromic(){
 	$looking = true;
 	$number = 100;
+
+	// Loop through each number 
 	while($looking){
+		// Check if the number is a even digit
 		if ((log($number, 10) + 1) % 2 != 0){
+			//If odd number digit * 10 to the next dec place
 			$number = $number * 10;
 		} else {
+			// Square the number
 			$square = $number ** 2;
+
+			// Check for Palindrome
 			if (strrev((string)$square) == (string)$square){
+				// Return number that make Palindrome
 				return array($number, $square);
 			} else {
+
 				$number++;
 			}//end inner if for square
 		}//end if statement
@@ -286,25 +295,29 @@ function palindrome($array){
 
 	// Iterate through each line in the text
 	foreach($array as $element){
-		// Tokenize the line
-		$tok = explode(" ", $element);
+
+
+		// Clean the sentence 
+		$tok = strtolower(trim($element));
+
+		// Remove non-letters
+		$tok = preg_replace("/[^a-zA-Z0-9]/", "", $tok);
 		
-		// Iterate through all the tokens
-		foreach ($tok as $tok){
-			$tok = strtolower(trim($tok));
-			// Check for palindrome
-			if ($tok == strrev($tok)){
+		// Match to see if it is palindrome
+
+		if ($tok == strrev($tok)){
 				// If there is one add it to list
-				array_push($results, $tok);
-			}//end if statement
-		}//end foreach word
+				array_push($results,$element);
+		}//end if statement
+
 	}//end for each line
+
 
 	// Print each palindrome if I want to
 
-	//foreach ($results as $results){
-	//	echo "{$results}\n";
-	//}
+	foreach ($results as $element){
+		echo "{$element}\n";
+	}
 
 	return count($results);
 }
@@ -329,7 +342,7 @@ function binarySearch($card, $cards_played){
 	// Init min, max, middle index as well as count
 	$minIndex = 0;
 	$maxIndex = count($cards_played)-1;
-	$middleIndex = ceil(($maxIndex - $minIndex) / 2);
+	$middleIndex = ceil(($maxIndex + $minIndex) / 2);
 	$count = 0;
 
 	// If the card is out of bound of the highest card or lowest clearly not in list
@@ -339,31 +352,30 @@ function binarySearch($card, $cards_played){
 	} else {
 
 		// Iterate through array using a middle point as point of comparasion
-		while(true){
+		while(true and $minIndex <= $maxIndex ){
 
 			// If we found the card we are done
 			if ($cards_played[$middleIndex] == $card){
 				return $count;
+			}// end if
 
-			// If we ran out of search possibility we are done
-			} else if ($maxIndex == $middleIndex or $minIndex == $middleIndex){
-				return NULL;
-			}// end if statment
+
 
 			// If greater move minIndex up and recalculate middle
-			if ($cards_played[$middleIndex] > $card){
+			if ($card < $cards_played[$middleIndex]){
 				$count++;
-				$maxIndex = $middleIndex;
-				$middleIndex = ceil(($maxIndex - $minIndex) / 2);
+				$maxIndex = $middleIndex - 1;
+				$middleIndex = ceil(($maxIndex + $minIndex) / 2);
 
 			// If smaller move maxIndex down adn recalculate middle
 			} else {
 				$count++;
-				$minIndex = $middleIndex;
-				$middleIndex = ceil(($maxIndex - $minIndex) / 2) + $minIndex;
+				$minIndex = $middleIndex + 1;
+				$middleIndex = ceil(($maxIndex + $minIndex) / 2);
 			}//end if statement
 
 		}//end while loop
+		return NULL;
 
 	}//end outer if statement
 
@@ -371,7 +383,7 @@ function binarySearch($card, $cards_played){
 
 // Find the card by looking through each element starting from first
 function bruteForce($card, $cards_played){
-	$count = 0;
+	$count = 1;
 
 	// Iterate through each element in the list
 	foreach ($cards_played as $element){
@@ -401,7 +413,7 @@ function Devise($card){
 	$bruteForce = bruteForce($card, $cards_played);
 
 	// If one of them is NULL clearly we did not find it 
-	if ($binarySearch == NULL or $bruteForce == NULL){
+	if ($binarySearch === NULL or $bruteForce === NULL){
 		return NULL;
 	} else {
 		return array($binarySearch, $bruteForce);
@@ -412,7 +424,7 @@ function Devise($card){
 $result = Devise($line);
 
 // Print the result based on the answer
-if ($result == NULL){
+if ($result === NULL){
 	echo "Sorry that card does not exist";
 } else {
 	echo "A bruce force method took $result[1] and binary search took $result[0] to find the card $line";
@@ -425,10 +437,114 @@ if ($result == NULL){
 echo "\n\n-------------------  Exercise 9 ----------------------------\n\n";
 
 
+echo "The Monte Carlo Gas Station \n";
 
+// Does the gas station simulation
+function gasStation(){
+	// Init starting values
 
+	// Constants
+	$wait = 8;
+	$prob = 0.1;
+	$day = 480;
 
+	// Start day at 1 minute
+	$start = 1;
 
+	// For first customer case
+	$first = true;
+
+	// Is the station in use
+	$inUse = true;
+
+	// Counts the amount of time a person is at the station
+	$currentUserWait = 0;
+
+	// Stats
+	$amountCustomer = 0;
+	$customerWait = array();
+	$finished = 0;
+
+	// Simulates the day
+	while ($start <= $day){
+		
+		// See if there is a new customer
+		$chance = probCustomer($prob);
+
+		// First customer base case
+		if($first){
+			$currentUserWait = 8;
+			$amountCustomer++;
+			$first = false;
+			$inUse = true;
+		}//end if
+
+		// There is a new customer and no one is waiting
+		if ($chance and $currentUserWait == 0 ){
+			$currentUserWait = 8;
+			$amountCustomer++;
+			$inUse = true;
+			array_push($customerWait, 0);
+
+		// There is a new customer but there is someone is there
+		} else if($chance and $currentUserWait != 0) {
+
+			// Add the wait time to the array
+			array_push($customerWait, calculateWait($customerWait, $currentUserWait, $finished));
+			$amountCustomer++;
+		}//end if
+
+		// Ensure that we don't go below zero. aka. no one is there
+		if($currentUserWait > 0){
+			$currentUserWait--;
+		}//end if
+
+		// Customer is done using the gas station
+		if($currentUserWait == 0 and $inUse){
+			$inUse = false;
+			$finished++;
+
+			// If there is someone waiting start that person's use
+			if($finished <= count($customerWait)){
+				$currentUserWait = 8;
+				$inUse = true;
+			}//end inner if
+			
+		}//end outer if
+
+		// Increment time
+		$start++;
+
+	}//end while
+	// Return all the wait time
+	return array($customerWait, $amountCustomer);
+
+}//end gasStation
+
+// Calculates how much waiting a person needs to do
+function calculateWait($waitList, $currentTime, $finish){
+	$waitTime = ((count($waitList) - $finish) * 8) + $currentTime; 
+	return $waitTime;
+}//end calculateWait
+
+// Runs the random numbers for customer
+function probCustomer($percent){
+	$success =  mt_rand() / mt_getrandmax();
+	if ($success <= 0.1){
+		return true;
+	} else {
+		return false;
+	}//end if 
+
+}//end probCustomer
+
+$result = gasStation();
+
+// Format string
+$average = array_sum($result[0]) / count($result[0]);
+$formatedString =  sprintf("The average wait time is %u with %u amount of customer ",$average,$result[1]);
+
+echo "$formatedString";
 
 /////////////////////////////////////////////////////////////////////////////////
 //		Code for Exercise 10 follows
