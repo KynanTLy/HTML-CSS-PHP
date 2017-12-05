@@ -12,7 +12,7 @@ function init_database(){
 	$pipeline = mysql_connect('localhost', $USER, $PASSWORD, $DATABASE);
 
 	if(!$pipeline){
-		echo "Database Connection Failed"
+		echo "Database Connection Failed";
 		exit;
 	}//end if check pipeline
 

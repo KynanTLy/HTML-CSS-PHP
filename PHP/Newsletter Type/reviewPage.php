@@ -17,7 +17,7 @@
 		$note = addslashes($_POST["note"]);
 		$submit = $_POST["submit"];
 
-
+		echo check_input($game, $relate_sad, $relate_lost, $relate_family, $relate_anxiety, $relate_confidence, $relate_stress, $note);
 	}
 
 ?>
@@ -61,7 +61,7 @@
           <ul>
             <!-- List of links -->
             <li> <a href="index.html">Home</a></li>
-            <li class="current"><a href="about.html">Review</a></li>
+            <li class="current"><a href="reviewPage.php">Review</a></li>
             <li><a href="dataVis.html">Data</a></li>
           <!-- End of navigation list -->
           </ul>
@@ -93,7 +93,7 @@
           </p>
 
           	<!-- Start the form -->
-			<form action="review.php" method="post">
+			<form action="reviewPage.php" method="post">
 				
 				<!-- Start selector for gamename -->
 				<label class="statement">Choose a Game From Our List</label>
