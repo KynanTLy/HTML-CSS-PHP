@@ -553,8 +553,32 @@ echo "\n\n-------------------  Exercise 10 ----------------------------\n\n";
 
 
 
+echo "Estimating Pi \n";
 
+// Take in inpit
+$line = readline("Please the amount of dart throws: \n");
 
+function estimatePi($numThrow){
+	
+	$numDart = 0;
 
+	for($i = 0; $i < $numThrow ; $i++){
+		$randX = rand(-1,1);
+		$randY = rand(-1,1);
+
+		if (1 < ($randX * $randX) + ($randY * $randY)){
+			$numDart++;
+		}//end if 
+	}//end for 
+
+	return (4 * ($numDart / $numThrow));
+
+}//end estimatePi
+
+$result = estimatePi($line);
+
+$formatedString =  sprintf("The estimation of pi using %u throws is %f ",$line,$result);
+
+echo "$formatedString";
 
 ?>

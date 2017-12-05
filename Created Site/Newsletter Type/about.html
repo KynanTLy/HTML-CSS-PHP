@@ -1,3 +1,27 @@
+<?php
+	
+	//include library
+	include "./review.php";
+
+	// Check to see if there was a request with POST
+	if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+		// Save the data into their own variables
+		$game = $_POST["Game_Listed"];
+		$relate_sad = $_POST["relate_sad"];
+		$relate_lost = $_POST["relate_lost"];
+		$relate_family = $_POST["relate_family"];
+		$relate_anxiety = $_POST["relate_anxiety"];
+		$relate_confidence = $_POST["relate_confidence"];
+		$relate_stress = $_POST["relate_stress"];
+		$note = addslashes($_POST["note"]);
+		$submit = $_POST["submit"];
+
+
+	}
+
+?>
+
 <!DOCTYPE html>
 <html>
   <!-- Start of the head of the HTML -->
@@ -37,7 +61,7 @@
           <ul>
             <!-- List of links -->
             <li> <a href="index.html">Home</a></li>
-            <li class="current"><a href="about.html">About</a></li>
+            <li class="current"><a href="about.html">Review</a></li>
             <li><a href="dataVis.html">Data</a></li>
           <!-- End of navigation list -->
           </ul>
@@ -56,19 +80,214 @@
         <article id="main-col">
           <!-- Create header for article -->
           <h1 class="page-title">
-            About the Site
+            Tell Us About A Game
           </h1>
-          <!-- Information about page-title -->
+          <!-- Information about the review page -->
           <p>
-            The goal of this site is to collect all the postive impact different video games had on a person's life. A secondary purpose is to show other who are experincing a low time in their life can find inspiration, motivation, relate in other video games that had benefitted others. Therefore not only serving as a source where we can map and record all the postive of different video games, but also provide a resource that allows to discover other video games as well.
-
+            There are many games out there and each person has their own favourite game or ones that mean the most to them. So tell us about your game to help build this collection!
           </p>
           <!-- End of the first paragraph of page-title -->
+
           <!-- Secondary paragraph -->
           <p class="dark">
-            Therefore this site would be an exploratory site to try and learn different ways to accomplish this goal
           </p>
+
+          	<!-- Start the form -->
+			<form action="review.php" method="post">
+				
+				<!-- Start selector for gamename -->
+				<label class="statement">Choose a Game From Our List</label>
+					<select name="Game_Listed" class="statement">
+						<option value="Mr.">Mr.</option>
+						<option value="Mrs.">Mrs.</option>
+						<option value="Ms.">Ms.</option>
+					</select> 
+				<!-- End game selector -->
+
+				<!-- Start first question for review -->
+				<label class="statement">Did this game help you overcome a sad time in your life?</label>
+					
+					<!-- Set the list of options for 1st question -->
+					<ul class='likert'>
+						<li>
+							<input type="radio" name="relate_sad" value="2">
+							<label>Strongly agree</label>
+						</li>
+						<li>
+							<input type="radio" name="relate_sad" value="1">
+							<label>Agree</label>
+						</li>
+						<li>
+						<input type="radio" name="relate_sad" value="0">
+							<label>Neutral</label>
+						</li>
+						<li>
+							<input type="radio" name="relate_sad" value="-1">
+							<label>Disagree</label>
+						</li>
+						<li>
+							<input type="radio" name="relate_sad" value="-2">
+							<label>Strongly disagree</label>
+						</li>
+					</ul>	
+					<!-- End list 1st question -->
+
+
+				<!-- Start second question for review -->
+				<label class="statement">Did this game help you overcome a time of lost in your life?</label>
+					
+					<!-- Set the list of for 2nd question -->
+					<ul class='likert'>
+						<li>
+							<input type="radio" name="relate_lost" value="2">
+							<label>Strongly agree</label>
+						</li>
+						<li>
+							<input type="radio" name="relate_lost" value="1">
+							<label>Agree</label>
+						</li>
+						<li>
+						<input type="radio" name="relate_lost" value="0">
+							<label>Neutral</label>
+						</li>
+						<li>
+							<input type="radio" name="relate_lost" value="-1">
+							<label>Disagree</label>
+						</li>
+						<li>
+							<input type="radio" name="relate_lost" value="-2">
+							<label>Strongly disagree</label>
+						</li>
+					</ul>
+					<!-- End list 2nd question -->		
+
+				<!-- Start third question for review -->
+				<label class="statement">Did this game help you get through family issues?</label>
+					
+					<!-- Set the list of for 3rd question -->
+					<ul class='likert'>
+						<li>
+							<input type="radio" name="relate_family" value="2">
+							<label>Strongly agree</label>
+						</li>
+						<li>
+							<input type="radio" name="relate_family" value="1">
+							<label>Agree</label>
+						</li>
+						<li>
+						<input type="radio" name="relate_family" value="0">
+							<label>Neutral</label>
+						</li>
+						<li>
+							<input type="radio" name="relate_family" value="-1">
+							<label>Disagree</label>
+						</li>
+						<li>
+							<input type="radio" name="relate_family" value="-2">
+							<label>Strongly disagree</label>
+						</li>
+					</ul>
+					<!-- End list 3rd question -->
+
+				<!-- Start fouth question for review -->
+				<label class="statement">Did this game help manage anxiety?</label>
+					
+					<!-- Set the list of for 4th question -->
+					<ul class='likert'>
+						<li>
+							<input type="radio" name="relate_anxiety" value="2">
+							<label>Strongly agree</label>
+						</li>
+						<li>
+							<input type="radio" name="relate_anxiety" value="1">
+							<label>Agree</label>
+						</li>
+						<li>
+						<input type="radio" name="relate_anxiety" value="0">
+							<label>Neutral</label>
+						</li>
+						<li>
+							<input type="radio" name="relate_anxiety" value="-1">
+							<label>Disagree</label>
+						</li>
+						<li>
+							<input type="radio" name="relate_anxiety" value="-2">
+							<label>Strongly disagree</label>
+						</li>
+					</ul>
+					<!-- End list 4th question -->
+					
+				<!-- Start fifth question for review -->
+				<label class="statement">Did this game help you gain more confidence in yourself?</label>
+					
+					<!-- Set the list of for 5th question -->
+					<ul class='likert'>
+						<li>
+							<input type="radio" name="relate_confidence" value="2">
+							<label>Strongly agree</label>
+						</li>
+						<li>
+							<input type="radio" name="relate_confidence" value="1">
+							<label>Agree</label>
+						</li>
+						<li>
+						<input type="radio" name="relate_confidence" value="0">
+							<label>Neutral</label>
+						</li>
+						<li>
+							<input type="radio" name="relate_confidence" value="-1">
+							<label>Disagree</label>
+						</li>
+						<li>
+							<input type="radio" name="relate_confidence" value="-2">
+							<label>Strongly disagree</label>
+						</li>
+					</ul>
+					<!-- End list 5th question -->		
+
+				<!-- Start sixth question for review -->
+				<label class="statement">Did this game help you relieve stress?</label>
+					
+					<!-- Set the list of for 6th question -->
+					<ul class='likert'>
+						<li>
+							<input type="radio" name="relate_stress" value="2">
+							<label>Strongly agree</label>
+						</li>
+						<li>
+							<input type="radio" name="relate_stress" value="1">
+							<label>Agree</label>
+						</li>
+						<li>
+						<input type="radio" name="relate_stress" value="0">
+							<label>Neutral</label>
+						</li>
+						<li>
+							<input type="radio" name="relate_stress" value="-1">
+							<label>Disagree</label>
+						</li>
+						<li>
+							<input type="radio" name="relate_stress" value="-2">
+							<label>Strongly disagree</label>
+						</li>
+					</ul>
+					<!-- End list 6th question -->	
+
+				<!-- Start notes for review -->
+				<label class="statement">Is there anything else you would like to tell us about the game?</label>	
+				<textarea rows="4" cols="100" maxlength="500" name=note>
+				</textarea> 	
+				<!-- End notes -->
+
+				<!-- Add a submit button -->
+				<input type="submit" name="submit" value="Submit your review" />
+
+			<!-- End Form -->
+			</form>
+
+
           <!-- End of 2nd paragraph of page-title -->
+
         <!-- End article -->
         </article>
 

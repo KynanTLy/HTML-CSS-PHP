@@ -50,7 +50,7 @@ CREATE TABLE `review` (
 	`relate_lost` tinyint(3) DEFAULT NULL,
 	`relate_family` tinyint(3) DEFAULT NULL,
 	`relate_anxiety` tinyint(3) DEFAULT NULL,
-	`relate_doubt` tinyint(3) DEFAULT NULL,
+	`relate_confidence` tinyint(3) DEFAULT NULL,
 	`relate_stress` tinyint(3) DEFAULT NULL,
 	`notes` varchar(500) DEFAULT NULL,
 	FOREIGN KEY (`reviewer_id`) 
@@ -81,7 +81,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `review` WRITE;
 /*!40000 ALTER TABLE `review` DISABLE KEYS */;
-INSERT INTO `review`(reviewer_id,game_id,  overall, relate_sad, relate_lost, relate_family, relate_anxiety, relate_doubt, relate_stress ) VALUES (1,1 , 3, 1,3, 2, 2, 2, 2),(2,2 , 3, 1,3, 5, 5, 2, 2);
+INSERT INTO `review`(reviewer_id,game_id,  overall, relate_sad, relate_lost, relate_family, relate_anxiety, relate_confidence, relate_stress ) VALUES (1,1 , 3, 1,3, 2, 2, 2, 2),(2,2 , 3, 1,3, 5, 5, 2, 2);
 /*!40000 ALTER TABLE `review` ENABLE KEYS */;
 UNLOCK TABLES;
 

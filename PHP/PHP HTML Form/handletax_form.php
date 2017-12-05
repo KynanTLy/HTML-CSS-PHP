@@ -14,7 +14,6 @@
 			.number { font-weight: bold; }
 		</style>
 
-</style>
 
 	<!-- End Head -->
 	</head>
