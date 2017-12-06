@@ -1,27 +1,3 @@
-<?php
-	
-	//include library
-	include "./review.php";
-
-	// Check to see if there was a request with POST
-	if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-
-		// Save the data into their own variables
-		$game = $_POST["Game_Listed"];
-		$relate_sad = $_POST["relate_sad"];
-		$relate_lost = $_POST["relate_lost"];
-		$relate_family = $_POST["relate_family"];
-		$relate_anxiety = $_POST["relate_anxiety"];
-		$relate_confidence = $_POST["relate_confidence"];
-		$relate_stress = $_POST["relate_stress"];
-		$note = addslashes($_POST["note"]);
-		$submit = $_POST["submit"];
-
-		echo check_input($game, $relate_sad, $relate_lost, $relate_family, $relate_anxiety, $relate_confidence, $relate_stress, $note);
-	}
-
-?>
-
 <!DOCTYPE html>
 <html>
   <!-- Start of the head of the HTML -->
@@ -62,7 +38,7 @@
             <!-- List of links -->
             <li> <a href="index.html">Home</a></li>
             <li class="current"><a href="reviewPage.php">Review</a></li>
-            <li><a href="dataVis.html">Data</a></li>
+            <li><a href="dataVis.php">Data</a></li>
           <!-- End of navigation list -->
           </ul>
         <!-- End navigation -->
@@ -93,16 +69,27 @@
           </p>
 
           	<!-- Start the form -->
-			<form action="reviewPage.php" method="post">
+			<form action="reviewPageResult.php" method="post">
 				
-				<!-- Start selector for gamename -->
+				<!-- Start selector for game name -->
 				<label class="statement">Choose a Game From Our List</label>
-					<select name="Game_Listed" class="statement">
-						<option value="Mr.">Mr.</option>
-						<option value="Mrs.">Mrs.</option>
-						<option value="Ms.">Ms.</option>
-					</select> 
-				<!-- End game selector -->
+
+					<!-- Start PHP Script-->
+					<?php
+
+						// Include needed libraries
+						include "./sqlManger.php";
+
+						// Start the selector
+						echo "<select name=Game_Listed class=statement>";
+
+						// Print out the different options
+						get_game_list();
+
+						// End selectpr
+						echo "</select>";
+					?>
+					<!-- End PHP Script -->
 
 				<!-- Start first question for review -->
 				<label class="statement">Did this game help you overcome a sad time in your life?</label>
@@ -218,7 +205,7 @@
 					<!-- End list 4th question -->
 					
 				<!-- Start fifth question for review -->
-				<label class="statement">Did this game help you gain more confidence in yourself?</label>
+				<label class="statement">Did this game help you gain confidence in yourself?</label>
 					
 					<!-- Set the list of for 5th question -->
 					<ul class='likert'>
@@ -273,6 +260,35 @@
 					</ul>
 					<!-- End list 6th question -->	
 
+					<!-- Start first question for review -->
+				<label class="statement">How would you rate the game overall out of 5?</label>
+					
+					<!-- Set the list of options for 1st question -->
+					<ul class='likert'>
+						<li>
+							<input type="radio" name="overall" value="5">
+							<label>5</label>
+						</li>
+						<li>
+							<input type="radio" name="overall" value="4">
+							<label>4</label>
+						</li>
+						<li>
+						<input type="radio" name="overall" value="3">
+							<label>3</label>
+						</li>
+						<li>
+							<input type="radio" name="overall" value="2">
+							<label>2</label>
+						</li>
+						<li>
+							<input type="radio" name="overall" value="1">
+							<label>1</label>
+						</li>
+					</ul>	
+					<!-- End list 1st question -->
+
+
 				<!-- Start notes for review -->
 				<label class="statement">Is there anything else you would like to tell us about the game?</label>	
 				<textarea rows="4" cols="100" maxlength="500" name=note>
@@ -296,9 +312,9 @@
           <!-- Set the div to dark -->
           <div class="dark">
             <!-- Header for the div in sidebar -->
-            <h3>Special Features</h3>
+            <h3>Feel Safe Telling Us!</h3>
             <!-- body for div of sidebar -->
-            <p>Allow for the user to add their own rating to a game that then will be displayed on the home page for all to see. This will be accomplished via some form of data visualization from data from the SQL databased 
+            <p>This is an anonymous review! Therefore feel free to tell us what you honesstly feel about each game. No one will know what you rated or wrote as a note.  
             <!-- End of paragraph of div of sidebar -->
             </p>
           <!-- End the div in sidebar-->
