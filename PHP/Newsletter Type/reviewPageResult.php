@@ -80,18 +80,16 @@
 					// Save the data into their own variables
 
 					$game = $_POST["Game_Listed"];
-					$overall = $_POST['overall'];
 					$relate_sad = $_POST["relate_sad"];
 					$relate_lost = $_POST["relate_lost"];
 					$relate_family = $_POST["relate_family"];
 					$relate_anxiety = $_POST["relate_anxiety"];
 					$relate_confidence = $_POST["relate_confidence"];
 					$relate_stress = $_POST["relate_stress"];
-					$note = addslashes($_POST["note"]);
 					$submit = $_POST["submit"];
 
 					// Call function to handle the variables
-					echo check_input($game, $overall, $relate_sad, $relate_lost, $relate_family, $relate_anxiety, $relate_confidence, $relate_stress, $note);
+					echo check_input($game, $relate_sad, $relate_lost, $relate_family, $relate_anxiety, $relate_confidence, $relate_stress);
 					
 					}//end if
 

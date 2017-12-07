@@ -4,7 +4,7 @@
 	// Require the sqlManager
 	include_once "./sqlManger.php";
 
-	function check_input($game, $overall,$relate_sad, $relate_lost, $relate_family, $relate_anxiety, $relate_confidence, $relate_stress, $note){
+	function check_input($game, $relate_sad, $relate_lost, $relate_family, $relate_anxiety, $relate_confidence, $relate_stress){
 			// Successful Registration Variable
 			$sucess = TRUE;
 
@@ -18,7 +18,7 @@
 
 
 			// Validate terms
-			if ( $relate_sad === NULL or $relate_lost === NULL or $relate_family === NULL or $relate_anxiety === NULL or $relate_confidence === NULL or $relate_stress === NULL or $overall === NULL) {
+			if ( $relate_sad === NULL or $relate_lost === NULL or $relate_family === NULL or $relate_anxiety === NULL or $relate_confidence === NULL or $relate_stress === NULL) {
 				
 				return '<h1 class="page-title">You have left one of the boxes unchecked</h1>';
 				
@@ -30,7 +30,7 @@
 			if ($sucess) {
 
 				// On suscess insert to database
-				return insert_database($game, $overall, $relate_sad, $relate_lost, $relate_family, $relate_anxiety, $relate_confidence, $relate_stress, $note);
+				return insert_database($game, $relate_sad, $relate_lost, $relate_family, $relate_anxiety, $relate_confidence, $relate_stress);
 
 
 			}//end Successful Registration

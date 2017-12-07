@@ -98,7 +98,7 @@
 	}//end insert_game
 
 	// Insert new review
-	function insert_database($game,$overall ,$relate_sad, $relate_lost, $relate_family, $relate_anxiety, $relate_confidence, $relate_stress, $note){
+	function insert_database($game, $relate_sad, $relate_lost, $relate_family, $relate_anxiety, $relate_confidence, $relate_stress){
 		
 		global $pipeline, $DATABASE;
 
@@ -106,7 +106,7 @@
 		init_database();
 
 		// Prepare SQL for insert
-		$insert = "INSERT INTO review ( game_id, overall, relate_sad, relate_lost, relate_family, relate_anxiety, relate_confidence, relate_stress, notes) VALUES ( $game, $overall, $relate_sad, $relate_lost, $relate_family, $relate_anxiety, $relate_confidence, $relate_stress, '$note')";	
+		$insert = "INSERT INTO review ( game_id, relate_sad, relate_lost, relate_family, relate_anxiety, relate_confidence, relate_stress) VALUES ( $game, $relate_sad, $relate_lost, $relate_family, $relate_anxiety, $relate_confidence, $relate_stress)";	
 
 		// Execute Query
 		$cloud = mysqli_query($pipeline, $insert);
@@ -275,7 +275,7 @@
 		init_database();
 		
 		// Query for game names
-		$query = "SELECT g.name, AVG(overall), AVG(relate_sad), AVG(relate_lost), AVG(relate_family), AVG(relate_anxiety), AVG(relate_confidence), AVG(relate_stress) FROM game g, review r WHERE r.game_id = g.id GROUP BY g.name";
+		$query = "SELECT g.name,  AVG(relate_sad), AVG(relate_lost), AVG(relate_family), AVG(relate_anxiety), AVG(relate_confidence), AVG(relate_stress) FROM game g, review r WHERE r.game_id = g.id GROUP BY g.name";
 
 		// Run the query
 		$cloud = mysqli_query($pipeline, $query);
@@ -296,14 +296,14 @@
 				"baseFont" => "Quicksand, sans-serif",
 				"showLegend" => "1",
 				"subcaptionFontSize" => "14",
-				"yAxisMaxValue"=> "5",
+				"yAxisMaxValue"=> "2",
 				"yAxisMinValue"=> "-2",
 
 			)
 		);
 
 		// Create the category
-		$category = array("Help Sad", "Help Lost", "Help Family", "Help Anxiety", "Help Confidence", "Help Stress", "Overall Rank");
+		$category = array("Help Sad", "Help Lost", "Help Family", "Help Anxiety", "Help Confidence", "Help Stress");
 
 		// Make categories into their array
 		$categoryList = array();	
@@ -335,10 +335,6 @@
 			$dataseries = array();
 
 			// Store all the averages for each section into an array
-			array_push($dataseries, array(
-				"value" => $row['AVG(overall)'],
-				"errorvalue" => 0
-			));
 			array_push($dataseries, array(
 				"value" => $row['AVG(relate_sad)'],
 				"errorvalue" => 0

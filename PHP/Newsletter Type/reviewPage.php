@@ -260,41 +260,6 @@
 					</ul>
 					<!-- End list 6th question -->	
 
-					<!-- Start first question for review -->
-				<label class="statement">How would you rate the game overall out of 5?</label>
-					
-					<!-- Set the list of options for 1st question -->
-					<ul class='likert'>
-						<li>
-							<input type="radio" name="overall" value="5">
-							<label>5</label>
-						</li>
-						<li>
-							<input type="radio" name="overall" value="4">
-							<label>4</label>
-						</li>
-						<li>
-						<input type="radio" name="overall" value="3">
-							<label>3</label>
-						</li>
-						<li>
-							<input type="radio" name="overall" value="2">
-							<label>2</label>
-						</li>
-						<li>
-							<input type="radio" name="overall" value="1">
-							<label>1</label>
-						</li>
-					</ul>	
-					<!-- End list 1st question -->
-
-
-				<!-- Start notes for review -->
-				<label class="statement">Is there anything else you would like to tell us about the game?</label>	
-				<textarea rows="4" cols="100" maxlength="500" name=note>
-				</textarea> 	
-				<!-- End notes -->
-
 				<!-- Add a submit button -->
 				<input type="submit" name="submit" value="Submit your review" />
 
