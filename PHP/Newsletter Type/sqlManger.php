@@ -9,9 +9,9 @@
 		global $pipeline, $DATABASE;
 
 		// Init Variables
-		$USER = "root";
-		$PASSWORD = "123456a";
-		$DATABASE = "testdb";
+		$USER = "kynan";
+		$PASSWORD = "cliniciansredrawspromote";
+		$DATABASE = "kynandb";
 
 
 		// Connect to the database
